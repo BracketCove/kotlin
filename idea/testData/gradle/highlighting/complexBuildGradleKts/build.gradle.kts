@@ -225,8 +225,6 @@ allprojects {
 
     task("listArchives") { listConfigurationContents("archives") }
 
-    task("listRuntimeJar") { listConfigurationContents("runtimeJar") }
-
     task("listDistJar") { listConfigurationContents("distJar") }
 
     afterEvaluate {

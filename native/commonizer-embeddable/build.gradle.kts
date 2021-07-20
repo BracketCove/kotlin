@@ -7,7 +7,7 @@ plugins {
 dependencies {
     embedded(project(":native:kotlin-klib-commonizer")) { isTransitive = false }
     runtimeOnly(kotlinStdlib())
-    runtimeOnly(projectRuntimeJar(":kotlin-compiler-embeddable"))
+    runtimeOnly(project(":kotlin-compiler-embeddable"))
 }
 
 sourceSets {
@@ -16,8 +16,6 @@ sourceSets {
 }
 
 publish()
-
-noDefaultJar()
 
 runtimeJar(rewriteDefaultJarDepsToShadedCompiler())
 sourcesJar { includeEmptyDirs = false; eachFile { exclude() } } // empty Jar, no public sources

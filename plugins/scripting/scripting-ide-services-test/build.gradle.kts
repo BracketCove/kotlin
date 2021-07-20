@@ -22,7 +22,7 @@ dependencies {
     testApi(project(":kotlin-scripting-ide-services-unshaded"))
     testApi(project(":kotlin-scripting-compiler"))
     testApi(project(":kotlin-scripting-dependencies"))
-    testApi(project(":kotlin-main-kts", "runtimeJar"))
+    testApi(project(":kotlin-main-kts"))
     testApi(project(":compiler:cli"))
 
     testRuntimeOnly(project(":kotlin-compiler"))
@@ -33,7 +33,7 @@ dependencies {
     embeddableTestRuntime(project(":kotlin-scripting-compiler-impl-embeddable", configuration="runtimeElements"))
     embeddableTestRuntime(project(":kotlin-scripting-dependencies", configuration="runtimeElements"))
     // For tests with IvyResolver
-    embeddableTestRuntime(project(":kotlin-main-kts", "runtimeJar"))
+    embeddableTestRuntime(project(":kotlin-main-kts"))
     embeddableTestRuntime(kotlinStdlib("jdk8"))
     embeddableTestRuntime(testSourceSet.output)
 }

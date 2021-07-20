@@ -21,8 +21,8 @@ dependencies {
     testRuntimeOnly(project(":kotlin-reflect"))
 
     embeddableTestRuntime(commonDep("junit"))
-    embeddableTestRuntime(projectRuntimeJar(":kotlin-scripting-jsr223"))
-    embeddableTestRuntime(projectRuntimeJar(":kotlin-scripting-compiler-embeddable"))
+    embeddableTestRuntime(project(":kotlin-scripting-jsr223"))
+    embeddableTestRuntime(project(":kotlin-scripting-compiler-embeddable"))
     embeddableTestRuntime(testSourceSet.output)
 }
 

@@ -64,12 +64,12 @@ dependencies {
     compileOnly(project(":kotlin-reflect"))
     compileOnly(intellijCoreDep()) { includeJars("intellij-core") }
 
-    runtimeOnly(projectRuntimeJar(":kotlin-compiler-embeddable"))
-    runtimeOnly(projectRuntimeJar(":kotlin-annotation-processing-gradle"))
-    runtimeOnly(projectRuntimeJar(":kotlin-android-extensions"))
-    runtimeOnly(projectRuntimeJar(":kotlin-compiler-runner"))
-    runtimeOnly(projectRuntimeJar(":kotlin-scripting-compiler-embeddable"))
-    runtimeOnly(projectRuntimeJar(":kotlin-scripting-compiler-impl-embeddable"))
+    runtimeOnly(project(":kotlin-compiler-embeddable"))
+    runtimeOnly(project(":kotlin-annotation-processing-gradle"))
+    runtimeOnly(project(":kotlin-android-extensions"))
+    runtimeOnly(project(":kotlin-compiler-runner"))
+    runtimeOnly(project(":kotlin-scripting-compiler-embeddable"))
+    runtimeOnly(project(":kotlin-scripting-compiler-impl-embeddable"))
 
     embedded(compileOnly(intellijDep()) {
         includeJars("asm-all", "gson", "guava", "serviceMessages", rootProject = rootProject)
@@ -87,7 +87,7 @@ dependencies {
 
     testCompileOnly(project(":compiler"))
     testImplementation(projectTests(":kotlin-build-common"))
-    testImplementation(projectRuntimeJar(":kotlin-android-extensions"))
+    testImplementation(project(":kotlin-android-extensions"))
     testImplementation(project(":kotlin-compiler-runner"))
     testImplementation(project(":kotlin-test::kotlin-test-junit"))
     testImplementation("junit:junit:4.12")
@@ -101,7 +101,6 @@ if (kotlinBuildProperties.isInJpsBuildIdeaSync) {
     configurations.api.get().exclude("com.android.tools.external.com-intellij", "intellij-core")
 }
 
-noDefaultJar()
 runtimeJar(rewriteDefaultJarDepsToShadedCompiler())
 
 tasks {

@@ -24,7 +24,7 @@ dependencies {
     runtimeOnly(kotlinStdlib())
     runtimeOnly(project(":kotlin-script-runtime"))
     runtimeOnly(project(":kotlin-reflect"))
-    runtimeOnly(projectRuntimeJar(":kotlin-daemon-embeddable"))
+    runtimeOnly(project(":kotlin-daemon-embeddable"))
     runtimeOnly(commonDep("org.jetbrains.intellij.deps", "trove4j"))
     testApi(commonDep("junit:junit"))
     testApi(project(":kotlin-test:kotlin-test-junit"))
@@ -37,8 +37,6 @@ sourceSets {
 }
 
 publish()
-
-noDefaultJar()
 
 // dummy is used for rewriting dependencies to the shaded packages in the embeddable compiler
 compilerDummyJar(compilerDummyForDependenciesRewriting("compilerDummy") {

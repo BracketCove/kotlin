@@ -31,7 +31,7 @@ dependencies {
     compileOnly(project(":compiler:cli-common"))
     compileOnly(project(":kotlin-scripting-jvm-host-unshaded"))
     compileOnly(project(":kotlin-scripting-dependencies"))
-    runtimeOnly(projectRuntimeJar(":kotlin-scripting-compiler-embeddable"))
+    runtimeOnly(project(":kotlin-scripting-compiler-embeddable"))
     runtimeOnly(kotlinStdlib())
     runtimeOnly(project(":kotlin-reflect"))
     embedded(project(":kotlin-scripting-common")) { isTransitive = false }
@@ -124,7 +124,6 @@ val resultJar by task<Jar> {
     }
 }
 
-addArtifact("runtimeJar", resultJar)
 addArtifact("runtimeElements", resultJar)
 addArtifact("archives", resultJar)
 

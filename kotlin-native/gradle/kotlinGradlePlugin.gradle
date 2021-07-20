@@ -13,12 +13,20 @@ project.buildscript.repositories {
 project.buildscript.dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${project.bootstrapKotlinVersion}"
 }
+
 configurations {
-    kotlinCompilerClasspath
+    kotlinCompilerClasspath {
+        canBeConsumed = false
+        canBeResolved = true
+        attributes {
+            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_RUNTIME))
+            attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named(LibraryElements.JAR))
+        }
+    }
 }
 
 if (!(project.findProperty("withoutEmbedabble")?.toString()?.toBoolean() ?: false)) {
     project.dependencies {
-        kotlinCompilerClasspath(project(path: ":kotlin-compiler-embeddable", configuration: "runtimeJar"))
+        kotlinCompilerClasspath(project(":kotlin-compiler-embeddable"))
     }
 }

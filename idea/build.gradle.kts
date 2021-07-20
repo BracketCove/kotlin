@@ -56,7 +56,7 @@ dependencies {
     compile(project(":kotlin-build-common"))
     compile(project(":daemon-common"))
     compile(project(":daemon-common-new"))
-    compile(projectRuntimeJar(":kotlin-daemon-client"))
+    compile(project(":kotlin-daemon-client"))
     compile(project(":compiler:plugin-api"))
     compile(project(":idea:jvm-debugger:jvm-debugger-util"))
     compile(project(":idea:jvm-debugger:jvm-debugger-core"))

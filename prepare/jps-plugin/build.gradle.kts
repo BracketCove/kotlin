@@ -13,7 +13,7 @@ dependencies {
         embedded(project(it)) { isTransitive = false }
     }
 
-    embedded(projectRuntimeJar(":kotlin-daemon-client"))
+    embedded(project(":kotlin-daemon-client"))
 }
 
 runtimeJar {

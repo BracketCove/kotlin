@@ -13,31 +13,31 @@ pill {
 val kotlinGradlePluginTest = project(":kotlin-gradle-plugin").sourceSets.named("test").map { it.output }
 
 dependencies {
-    testImplementation(projectRuntimeJar(":kotlin-gradle-plugin"))
+    testImplementation(project(":kotlin-gradle-plugin"))
     testImplementation(project(":kotlin-gradle-plugin-model"))
     testImplementation(project(":kotlin-project-model"))
     testImplementation(project(":kotlin-tooling-metadata"))
     testImplementation(kotlinGradlePluginTest)
     testImplementation(project(":kotlin-gradle-subplugin-example"))
-    testImplementation(projectRuntimeJar(":kotlin-allopen"))
-    testImplementation(projectRuntimeJar(":kotlin-noarg"))
-    testImplementation(projectRuntimeJar(":kotlin-lombok"))
-    testImplementation(projectRuntimeJar(":kotlin-sam-with-receiver"))
+    testImplementation(project(":kotlin-allopen"))
+    testImplementation(project(":kotlin-noarg"))
+    testImplementation(project(":kotlin-lombok"))
+    testImplementation(project(":kotlin-sam-with-receiver"))
     testImplementation(project(":kotlin-test:kotlin-test-jvm"))
     testImplementation(project(":native:kotlin-native-utils"))
 
-    testImplementation(projectRuntimeJar(":kotlin-compiler-embeddable"))
+    testImplementation(project(":kotlin-compiler-embeddable"))
     testImplementation(intellijCoreDep()) { includeJars("jdom") }
     // testCompileOnly dependency on non-shaded artifacts is needed for IDE support
     // testRuntimeOnly on shaded artifact is needed for running tests with shaded compiler
     testCompileOnly(project(":kotlin-gradle-plugin-test-utils-embeddable"))
-    testRuntimeOnly(projectRuntimeJar(":kotlin-gradle-plugin-test-utils-embeddable"))
+    testRuntimeOnly(project(":kotlin-gradle-plugin-test-utils-embeddable"))
 
     testImplementation(project(path = ":examples:annotation-processor-example"))
     testImplementation(kotlinStdlib("jdk8"))
     testImplementation(project(":kotlin-reflect"))
     testImplementation(project(":kotlin-android-extensions"))
-    testImplementation(projectRuntimeJar(":kotlin-parcelize-compiler"))
+    testImplementation(project(":kotlin-parcelize-compiler"))
     testImplementation(commonDep("org.jetbrains.intellij.deps", "trove4j"))
 
     testImplementation(gradleApi())
@@ -45,7 +45,7 @@ dependencies {
     testImplementation("com.google.code.gson:gson:${rootProject.extra["versions.jar.gson"]}")
     testApiJUnit5(vintageEngine = true, jupiterParams = true)
 
-    testRuntimeOnly(projectRuntimeJar(":kotlin-android-extensions"))
+    testRuntimeOnly(project(":kotlin-android-extensions"))
     testRuntimeOnly(project(":compiler:tests-mutes"))
 
     // Workaround for missing transitive import of the common(project `kotlin-test-common`

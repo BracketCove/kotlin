@@ -1,6 +1,8 @@
 description = "Kotlin Scripting Compiler extension providing code completion and static analysis (for using in embeddable mode)"
 
-plugins { java }
+plugins {
+    java
+}
 
 dependencies {
     embedded(project(":kotlin-scripting-ide-services-unshaded")) { isTransitive = false }
@@ -9,8 +11,8 @@ dependencies {
     runtimeOnly(kotlinStdlib())
     runtimeOnly(project(":kotlin-scripting-common"))
     runtimeOnly(project(":kotlin-scripting-jvm"))
-    runtimeOnly(projectRuntimeJar(":kotlin-compiler-embeddable"))
-    runtimeOnly(projectRuntimeJar(":kotlin-scripting-compiler-embeddable"))
+    runtimeOnly(project(":kotlin-compiler-embeddable"))
+    runtimeOnly(project(":kotlin-scripting-compiler-embeddable"))
 }
 
 sourceSets {
@@ -19,8 +21,6 @@ sourceSets {
 }
 
 publish()
-
-noDefaultJar()
 
 runtimeJar(rewriteDefaultJarDepsToShadedCompiler())
 sourcesJar()
